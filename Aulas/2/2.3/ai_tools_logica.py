@@ -45,6 +45,8 @@ def calcular_complexidade_tempo(argumentos):
         caminho_arquivo=nome_script
     )
 
+    print(f"Resposta do assistente: {resposta}")
+
     ferramenta.apagar_agente()
 
     return resposta
@@ -53,7 +55,7 @@ def calcular_complexidade_tempo(argumentos):
 def calcular_complexidade_memoria(argumentos):
     from assistentes import Assistente
 
-    ("Chamei ferramenta de complexidade de memória")
+    print("Chamei ferramenta de complexidade de memória")
     nome_script = argumentos["nome_script"]
     metodo_avaliado = argumentos["metodo_avaliado"]
     
@@ -108,6 +110,7 @@ def calcular_complexidade_memoria(argumentos):
         caminho_arquivo=nome_script
     )
 
+    print(f"Resposta do assistente: {resposta}")
 
     ferramenta.apagar_agente()
 

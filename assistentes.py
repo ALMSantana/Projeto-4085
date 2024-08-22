@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from ai_tools_descricoes import minhas_ferramentas, mapa_ferramentas
 import os
 import json #novo
+import google.generativeai as genai # novo incluído pip install google-generativeai
+import os
 
 load_dotenv()
 
@@ -18,6 +20,18 @@ class Assistente:
         self._criar_agente(eh_ferramenta)
         self.thread = None
         self.arquivo = None
+
+    def avaliar_resultado(self, resultado_avaliado, pergunta_usuario):
+        CHAVE_API_GEMINI = "AIzaSyBLD2O_4YVii7Cr6we1g5yMURqmfPQOVVE"
+        genai.configure(api_key=CHAVE_API_GEMINI)
+        prompt_sistema = f"Você é um avaliador de respostas da área de computação. Seu objetivo é verificar se códigos ou sugestões estão corretas e indicar, de forma estruturada, os erros e oportunidades de melhoria. Dê um parecer da qualidade da solução para a pergunta do usuário. Pergunta: {pergunta_usuario}"
+        llm = genai.GenerativeModel(
+            model_name = 'gemini-1.5-pro',
+            system_instruction = prompt_sistema
+        )
+        resposta = llm.generate_content(resultado_avaliado)
+        print(resposta.text)
+        return resposta.text
 
     def associar_arquivo(self, caminho_arquivo):
         if self.arquivo is None:

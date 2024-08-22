@@ -4,6 +4,7 @@ import pandas as pd
 from itertools import permutations
 from threading import Thread
 
+
 class AlocadorTarefas:
     '''
     Classe responsável por encontrar a melhor alocação de tarefas em servidores.

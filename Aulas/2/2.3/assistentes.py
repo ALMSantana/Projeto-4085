@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from ai_tools_descricoes import minhas_ferramentas, mapa_ferramentas
 import os
 import json #novo
-import google.generativeai as genai 
+import google.generativeai as genai # novo incluído pip install google-generativeai
 import os
 
 load_dotenv()
@@ -21,6 +21,7 @@ class Assistente:
         self.thread = None
         self.arquivo = None
 
+        #novo implementado
     def avaliar_resultado(self, resultado_avaliado):
         CHAVE_API_GEMINI = os.getenv("GEMINI_API_KEY")
         genai.configure(api_key=CHAVE_API_GEMINI)

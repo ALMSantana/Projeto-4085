@@ -30,8 +30,11 @@ def conversa(pergunta, caminho_arquivo):
     assistente = criar_assistente()
 
     while pergunta != "fim":
+        print("Começando a conversa...")
         resposta = assistente.perguntar(pergunta=pergunta, caminho_arquivo=caminho_arquivo, continuacao_conversa=True)
-        print(resposta) 
+        print(f"\n::RESPOSTA::\n{resposta}\n\n")
+        avaliacao_resposta = assistente.avaliar_resultado(resposta, pergunta)
+        print(f"\n::Avaliação da Resposta:: \n\n{avaliacao_resposta}\n\n")
         pergunta = input("\n#Digite sua próxima pergunta ao assistente (ou 'fim' para encerrar): ")
 
     assistente.apagar_agente()
@@ -45,6 +48,7 @@ def main():
 
     conversa(pergunta=pergunta_inicial, caminho_arquivo=caminho_arquivo)
     
+
 
 if __name__ == "__main__":
     main()
